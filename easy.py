@@ -35,3 +35,80 @@ class Solution:
 
     def strStr(self, haystack: str, needle: str) -> int:
         return haystack.find(needle)
+    
+    def majorityElement(self, nums: List[int]) -> int:
+        return sorted(nums)[floor(len(nums) / 2)]
+
+    #WORST PROBLEM YET REVISE REVISE REVISE
+    def maxProfit(self, prices: List[int]) -> int:
+        # if prices == sorted(prices, reverse = True):
+        #     print("reverse")
+        #     return 0
+        # # print(min(prices))
+        # # print(prices)
+        # # og_price = prices.copy()
+        # # print(prices[prices.index(min(prices)):])
+        # # if len(prices[prices.index(min(prices)):]) != 1:
+        # #     return (prices[prices.index(max(prices[prices.index(min(prices)):]))] - prices[prices.index(min(prices))])
+        # # prices.remove(min(prices))
+        # # while len(prices) > 0:
+        # #     print(prices)
+        # #     minimum = min(prices)
+        # #     if len(og_price[og_price.index(minimum):]) != 1:
+        # #         return (og_price[og_price.index(max(og_price[og_price.index(minimum):]))] - og_price[og_price.index(minimum)])
+        # # return 0
+        # biggest_diff = 0
+        # for i in range(len(prices)):
+        #     for j in range(i, len(prices)):
+        #         if (prices[j] - prices[i]) > biggest_diff:
+        #             # print(prices[j])
+        #             # print(j)
+        #             # print(prices[i])
+        #             # print(i)
+        #             biggest_diff = prices[j] - prices[i]
+        # return biggest_diff
+        mini = prices[0]
+        biggest_diff = 0
+        for i in prices:
+            if mini > i:
+                mini = i
+            if (i - mini) > biggest_diff:
+                biggest_diff = (i - mini)
+        return biggest_diff
+
+    def longestCommonPrefix(self, strs):
+        num = min(len(s) for s in strs)
+        same = False
+        while num > 0 and same == False:
+            for s in strs:
+                if strs[0][:num] != s[:num]:
+                    num -= 1
+                    same = False
+                    break
+                same = True
+        return strs[0][:num]
+
+    def rotate(self, nums: list[int], k: int) -> None:
+        # if k > len(nums):
+        #     for i in range(k):
+        #         num = nums.pop()
+        #         nums.insert(0, num)
+        # else:
+        #     new_num = nums[-k:] + nums[:k + 1]
+        #     print(new_num)
+        #     for i in range(len(nums)):
+        #         nums[i] = new_num[i]
+        k = k % len(nums)
+        nums[:] = nums[-k:] + nums[:-k]
+        # counter = k
+        # if k > len(nums):
+        #     counter = counter % len(nums)
+        # old_nums = nums.copy()
+        # og = 0
+        # for i in range(len(nums)):
+        #     if counter > 0:
+        #         nums[i] = old_nums[-counter]
+        #         counter -= 1
+        #     else:
+        #         nums[i] = old_nums[og]
+        #         og += 1
