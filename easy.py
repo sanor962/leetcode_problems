@@ -136,3 +136,15 @@ class Solution:
             if dict_a[key] > dict_b.get(key, 0):
                 return False
         return True
+
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        if len(set(s)) != len(set(t)):
+            return False
+        dict_s = {}
+        for i in range(len(s)):
+            if s[i] in dict_s:
+                if dict_s[s[i]] != t[i]:
+                    return False
+            else:
+                dict_s[s[i]] = t[i]
+        return True
