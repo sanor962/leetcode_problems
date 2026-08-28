@@ -1,3 +1,6 @@
+#for problem 383
+from collections import Counter
+
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         answer = len(set(nums))
@@ -112,3 +115,24 @@ class Solution:
         #     else:
         #         nums[i] = old_nums[og]
         #         og += 1
+
+        #BOTH SOLUTIONS WORK BUT THE ONE BOTTOM IS MORE EFFICIENT AND CLEANER THAN THE ONE ABOVE
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        # dict_a = {}
+        # dict_b = {}
+        # for i in magazine:
+        #     dict_b[i] = dict_b.get(i, 0) + 1
+        # for i in ransomNote:
+        #     dict_a[i] = dict_a.get(i, 0) + 1
+        #     if i not in dict_b.keys():
+        #         return False
+        # for key in dict_a.keys():
+        #     if dict_a[key] > dict_b[key]:
+        #         return False
+        # return True
+        dict_a = Counter(ransomNote)
+        dict_b = Counter(magazine)
+        for key in dict_a.keys():
+            if dict_a[key] > dict_b.get(key, 0):
+                return False
+        return True
