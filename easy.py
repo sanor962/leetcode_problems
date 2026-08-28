@@ -1,6 +1,18 @@
 #for problem 383
 from collections import Counter
 
+#for problem 1
+def two_sum_recursion(nums, target, point1, point2):
+    if (nums[point1] + nums[point2]) > target:
+        point2 -= 1
+        return two_sum_recursion(nums, target, point1, point2)
+    elif (nums[point1] + nums[point2]) < target:
+        point1 += 1
+        return two_sum_recursion(nums, target, point1, point2)
+    else:
+        answer = [point1, point2]
+        return answer
+
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         answer = len(set(nums))
@@ -148,3 +160,13 @@ class Solution:
             else:
                 dict_s[s[i]] = t[i]
         return True
+
+    def twoSum(self, nums, target):
+        og_nums = nums[:]
+        nums.sort()
+        answer = two_sum_recursion(nums, target, 0, len(nums) - 1)
+        if nums[answer[0]] == nums[answer[1]]:
+            last_index = og_nums.index(nums[answer[1]], og_nums.index(nums[answer[0]]) + 1)
+            return [og_nums.index(nums[answer[0]]), last_index]
+        else:
+            return [og_nums.index(nums[answer[0]]), og_nums.index(nums[answer[1]])]
