@@ -170,3 +170,6 @@ class Solution:
             return [og_nums.index(nums[answer[0]]), last_index]
         else:
             return [og_nums.index(nums[answer[0]]), og_nums.index(nums[answer[1]])]
+
+    def isAnagram(self, s: str, t: str) -> bool:
+        return Counter(t) == Counter(s)
