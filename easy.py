@@ -173,3 +173,19 @@ class Solution:
 
     def isAnagram(self, s: str, t: str) -> bool:
         return Counter(t) == Counter(s)
+
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        collect = {}
+        for i in range(len(strs)):
+            key = tuple(sorted(Counter(strs[i]).items()))
+            if key not in collect:
+                collect[key] = [i]
+            else:
+                collect[key].append(i)
+        answer = []
+        for key in collect.keys():
+            a = []
+            for i in collect[key]:
+                a.append(strs[i])
+            answer.append(a)
+        return answer
