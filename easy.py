@@ -175,17 +175,14 @@ class Solution:
         return Counter(t) == Counter(s)
 
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        collect = {}
-        for i in range(len(strs)):
-            key = tuple(sorted(Counter(strs[i]).items()))
-            if key not in collect:
-                collect[key] = [i]
-            else:
-                collect[key].append(i)
         answer = []
-        for key in collect.keys():
-            a = []
-            for i in collect[key]:
-                a.append(strs[i])
-            answer.append(a)
+        sort = {}
+        for i in range(len(strs)):
+            key = tuple(sorted(strs[i]))
+            if key not in sort:
+                sort[key] = [strs[i]]
+            else:
+                sort[key].append(strs[i])
+        for key in sort.keys():
+            answer.append(sort[key])
         return answer
