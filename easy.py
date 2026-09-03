@@ -186,3 +186,23 @@ class Solution:
         for key in sort.keys():
             answer.append(sort[key])
         return answer
+
+    def summaryRanges(self, nums: List[int]) -> List[str]:
+        answer = []
+        if nums == []:
+            return []
+        previous = nums[0]
+        beginning = nums[0]
+        for i in range(1, len(nums)):
+            if nums[i] > (previous + 1):
+                if beginning == previous:
+                    answer.append(f"{previous}")
+                else:
+                    answer.append(f"{beginning}->{nums[i-1]}")
+                beginning = nums[i]
+            previous = nums[i]
+        if beginning == previous:
+            answer.append(f"{previous}")
+        else:
+            answer.append(f"{beginning}->{nums[-1]}")
+        return (answer)
