@@ -13,3 +13,41 @@ class Solution:
                 nums[counter] = current
                 counter += 1
         return counter
+
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        answer = []
+        sort = {}
+        for i in range(len(strs)):
+            key = tuple(sorted(strs[i]))
+            if key not in sort:
+                sort[key] = [strs[i]]
+            else:
+                sort[key].append(strs[i])
+        for key in sort.keys():
+            answer.append(sort[key])
+        return answer
+
+    def rotate(self, nums: list[int], k: int) -> None:
+            # if k > len(nums):
+            #     for i in range(k):
+            #         num = nums.pop()
+            #         nums.insert(0, num)
+            # else:
+            #     new_num = nums[-k:] + nums[:k + 1]
+            #     print(new_num)
+            #     for i in range(len(nums)):
+            #         nums[i] = new_num[i]
+            k = k % len(nums)
+            nums[:] = nums[-k:] + nums[:-k]
+            # counter = k
+            # if k > len(nums):
+            #     counter = counter % len(nums)
+            # old_nums = nums.copy()
+            # og = 0
+            # for i in range(len(nums)):
+            #     if counter > 0:
+            #         nums[i] = old_nums[-counter]
+            #         counter -= 1
+            #     else:
+            #         nums[i] = old_nums[og]
+            #         og += 1
