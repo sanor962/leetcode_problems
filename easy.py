@@ -168,3 +168,6 @@ class Solution:
         else:
             answer.append(f"{beginning}->{nums[-1]}")
         return (answer)
+
+    def isPalindrome(self, x):
+        return (str(x) == (str(x)[::-1]))
