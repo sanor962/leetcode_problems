@@ -171,3 +171,14 @@ class Solution:
 
     def isPalindrome(self, x):
         return (str(x) == (str(x)[::-1]))
+
+    def plusOne(self, digits: List[int]) -> List[int]:
+        actual_num = 0
+        for i in range(len(digits)):
+            actual_num = actual_num + (digits[-i - 1] * 10**i)
+        actual_num += 1
+        answer = []
+        while actual_num > 0:
+            answer.append((actual_num % 10))
+            actual_num = (actual_num // 10)
+        return answer[::-1]
