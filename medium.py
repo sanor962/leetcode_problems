@@ -1,3 +1,14 @@
+#helper function for myPow or problem 50
+def pow_help(x, n):
+    if n == 0:
+        return 1
+    if n == 1:
+        return x
+    half = pow_help(x, n//2)
+    if n % 2 == 1:
+        return half * half * x
+    return half * half
+
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         current_counter = 0
@@ -51,3 +62,8 @@ class Solution:
             #     else:
             #         nums[i] = old_nums[og]
             #         og += 1
+
+    def myPow(self, x: float, n: int) -> float:
+        if n < 0:
+            return (1/pow_help(x, abs(n)))
+        return pow_help(x, n)
