@@ -199,3 +199,36 @@ class Solution:
             else:
                 right = mid - 1
         return right
+
+    #REVIEW REVIEW REVIEW
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        if list1 == None and list2 == None:
+            return list1
+        elif list1 == None and list2 != None:
+            return list2
+        elif list1 != None and list2 == None:
+            return list1
+        if list1.val > list2.val:
+            answer = ListNode(list2.val, None)
+            list2 = list2.next
+        else:
+            answer = ListNode(list1.val, None)
+            list1 = list1.next
+        head = answer
+        while list1 != None or list2 != None:
+            if list1 != None and list2 != None:
+                if list1.val > list2.val:
+                    answer.next = list2
+                    answer = answer.next
+                    list2 = list2.next
+                else:
+                    answer.next = list1
+                    answer = answer.next
+                    list1 = list1.next
+            elif list1 == None:
+                answer.next = list2
+                break
+            else:
+                answer.next = list1
+                break
+        return head
