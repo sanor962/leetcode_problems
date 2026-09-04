@@ -182,3 +182,20 @@ class Solution:
             answer.append((actual_num % 10))
             actual_num = (actual_num // 10)
         return answer[::-1]
+
+    #REVIEW REVIEW REVIEW
+    def mySqrt(self, x: int) -> int:
+        if x == 0:
+            return 0
+        left = 1
+        right = x
+        while left <= right:
+            mid = (left + right) // 2
+            square = mid * mid
+            if square == x:
+                return mid
+            elif square < x:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return right
