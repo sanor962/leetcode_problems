@@ -245,3 +245,6 @@ class Solution:
 
     def hammingWeight(self, n: int) -> int:
         return (str(bin(n)[2:]).count("1"))
+
+    def reverseBits(self, n: int) -> int:
+        return int(f"{n:032b}"[::-1], 2)
