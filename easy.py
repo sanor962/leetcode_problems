@@ -242,3 +242,6 @@ class Solution:
             list_num.add(head)
             head = head.next
         return False
+
+    def hammingWeight(self, n: int) -> int:
+        return (str(bin(n)[2:]).count("1"))
