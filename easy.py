@@ -232,3 +232,13 @@ class Solution:
                 answer.next = list1
                 break
         return head
+
+    #learned that you can literally just add the node to the set sonion
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        list_num = set()
+        while head != None:
+            if head in list_num:
+                return True
+            list_num.add(head)
+            head = head.next
+        return False
