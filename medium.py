@@ -67,3 +67,22 @@ class Solution:
         if n < 0:
             return (1/pow_help(x, abs(n)))
         return pow_help(x, n)
+
+    #REVIEW REVIEW REVIEW
+    def trailingZeroes(self, n: int) -> int:
+        #num = (factorial(n))
+        # counter = 0
+        # while num > 0 and num % 10 == 0:
+        #     counter += 1
+        #     num = num // 10
+        # return counter
+        # if n > 25:
+        #     return n // 5 + 1
+        # else: 
+        #     return n // 5
+        # # return if n > 25: n // 5 + 1 else: n // 5
+        counter = 0
+        while n >= 5:
+            n = n // 5
+            counter += n
+        return counter
