@@ -251,3 +251,10 @@ class Solution:
 
     def addBinary(self, a: str, b: str) -> str:
         return str(bin((int(a, 2) + int(b, 2))))[2:]
+    
+    def isPalindrome(self, s: str) -> bool:
+        f = ""
+        for a in s:
+            if a.isalpha() or a.isdigit():
+                f = f + a.lower()
+        return f == f[::-1]
