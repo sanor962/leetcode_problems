@@ -40,5 +40,5 @@ The solutions are organized by the problem difficulty (**Easy**, **Medium**, **H
 
 ## Connect with Me
 
-- **LeetCode Profile:** [Your Profile Link Here](https://leetcode.com/u/sanor962/)
-- **LinkedIn:** [Your LinkedIn Link Here](https://www.linkedin.com/in/saanvi-verma-005aa7280/)
+- **LeetCode Profile:** [LeetCode](https://leetcode.com/u/sanor962/)
+- **LinkedIn:** [LinkedIn](https://www.linkedin.com/in/saanvi-verma-005aa7280/)
