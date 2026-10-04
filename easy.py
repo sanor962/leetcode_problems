@@ -13,6 +13,21 @@ def two_sum_recursion(nums, target, point1, point2):
         answer = [point1, point2]
         return answer
 
+#for problem 100
+def isSameTreeHelper(p: Optional[TreeNode], q: Optional[TreeNode]):
+    if p == None and q == None:
+        return 0
+    elif p == None or q == None:
+        return -1
+    if p.val == q.val:
+        if p.left != None and q.left == None:
+            return -1
+        if p.right != None and q.right == None:
+            return -1
+        return 0 + isSameTreeHelper(p.left, q.left) + isSameTreeHelper(p.right, q.right)
+    else:
+        return -1
+
 #for problem 104
 def maxDepthHelper(node: TreeNode | None):
     if node == None:
@@ -290,5 +305,10 @@ class Solution:
 
     def maxDepth(self, root: TreeNode | None) -> int:
         return maxDepthHelper(root)
+
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        if isSameTreeHelper(p, q) < 0:
+            return False
+        return True
     
     
