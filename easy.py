@@ -258,3 +258,15 @@ class Solution:
             if a.isalpha() or a.isdigit():
                 f = f + a.lower()
         return f == f[::-1]
+
+    def isSubsequence(self, s: str, t: str) -> bool:
+        pointer = 0
+        if len(s) != 0:
+            for i in t:
+                if s[pointer] == i:
+                    pointer = pointer + 1
+                    if pointer == len(s):
+                        return True
+        if pointer == len(s):
+            return True
+        return False
