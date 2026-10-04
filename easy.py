@@ -311,4 +311,19 @@ class Solution:
             return False
         return True
     
-    
+    def isValid(self, s: str) -> bool:
+        if len(s) % 2 != 0:
+            return False
+        parentheces = []
+        has_par = {")": "(", "}": "{", "]": "["}
+        for a in s:
+            if a in has_par:
+                if len(parentheces) != 0:
+                    b = parentheces.pop()
+                else:
+                    b = "%"
+                if has_par[a] != b:
+                    return False
+            else:
+                parentheces.append(a)
+        return len(parentheces) == 0
