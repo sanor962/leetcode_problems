@@ -13,6 +13,23 @@ def two_sum_recursion(nums, target, point1, point2):
         answer = [point1, point2]
         return answer
 
+#for problem 104
+def maxDepthHelper(node: TreeNode | None):
+    if node == None:
+        return 0
+    if node.left == None and node.right == None:
+        return 1
+    left_sum = 0
+    right_sum = 0
+    if node.left != None:
+        left_sum = 1 + maxDepthHelper(node.left)
+    if node.right != None:
+        right_sum = 1 + maxDepthHelper(node.right)
+    if left_sum > right_sum:
+        return left_sum
+    return right_sum
+    
+
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         answer = len(set(nums))
@@ -270,3 +287,8 @@ class Solution:
         if pointer == len(s):
             return True
         return False
+
+    def maxDepth(self, root: TreeNode | None) -> int:
+        return maxDepthHelper(root)
+    
+    
