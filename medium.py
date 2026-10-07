@@ -152,3 +152,31 @@ class Solution:
             current_node = current_node.next
         current_node.val = answer % 10
         return head
+
+    #solution 2 (better time complexity)
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        counter = 0
+        num1 = 0
+        num2 = 0
+        carry = 0
+        head = ListNode(0, None)
+        current_node = head
+        while l1 != None or l2 != None:
+            num1 = 0
+            num2 = 0
+            if l1 != None:
+                num1 = (l1.val)
+                l1 = l1.next
+            if l2 != None:
+                num2 = (l2.val)
+                l2 = l2.next
+            counter+=1
+            answer = num1 + num2 + carry
+            last = answer % 10
+            carry = int(answer // 10)
+            current_node.next = ListNode(0)
+            current_node = current_node.next
+            current_node.val = last
+        if carry != 0:
+            current_node.next = ListNode(carry)
+        return head.next
