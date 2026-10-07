@@ -127,3 +127,28 @@ class Solution:
                         k+=1
                     longest = max(longest, length)
             return longest
+
+    #solution 1
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        counter = 0
+        num1 = 0
+        num2 = 0
+        while l1 != None or l2 != None:
+            if l1 != None:
+                num1 = num1 + (l1.val * pow(10, counter))
+                l1 = l1.next
+            if l2 != None:
+                num2 = num2 + (l2.val * pow(10, counter))
+                l2 = l2.next
+            counter+=1
+        answer = num1 + num2
+        head = ListNode(0, None)
+        current_node = head
+        while answer >= 10:
+            last = answer % 10
+            answer = int(answer // 10)
+            current_node.val = last
+            current_node.next = ListNode(0, None)
+            current_node = current_node.next
+        current_node.val = answer % 10
+        return head
