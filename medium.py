@@ -99,3 +99,31 @@ class Solution:
             else:
                 left = left + 1
         return []
+
+    def longestConsecutive(self, nums: list[int]) -> int:
+            # if nums == []:
+            #     return 0
+            # sort = list(sorted(set(nums)))
+            # current = 0
+            # biggest = 0
+            # for i in range(len(sort) - 1):
+            #     if sort[i] + 1 == sort[i + 1]:
+            #         current += 1
+            #     else:
+            #         if biggest < current:
+            #             biggest = current
+            #         current = 0
+            # if biggest < current:
+            #     biggest = current
+            # return (biggest + 1)
+            longest = 0
+            nums = set(nums)
+            for i in nums:
+                if (i - 1) not in nums:
+                    length = 0
+                    k = i
+                    while k in nums:
+                        length+=1
+                        k+=1
+                    longest = max(longest, length)
+            return longest
