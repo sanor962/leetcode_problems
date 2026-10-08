@@ -180,3 +180,18 @@ class Solution:
         if carry != 0:
             current_node.next = ListNode(carry)
         return head.next
+
+    #solution 1
+    def rangeBitwiseAnd(self, left: int, right: int) -> int:
+        count = 0
+        while left != right:
+            left >>= 1
+            right >>= 1
+            count+=1
+        return (left << count)
+    
+    #solution 2 (better time complexity)
+    def rangeBitwiseAnd(self, left: int, right: int) -> int:
+        while right > left:
+            right &= (right - 1)
+        return right
