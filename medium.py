@@ -195,3 +195,19 @@ class Solution:
         while right > left:
             right &= (right - 1)
         return right
+
+    #solution 1 (need to improve time complexity)
+    def singleNumber(self, nums: list[int]) -> int:
+        sums = [0] * 32
+        for n in nums:
+            for i in range(32):
+                if n & 1 == 1:
+                    sums[i] = sums[i] + 1
+                n >>= 1
+        answer = ""
+        for i in range(32):
+            sums[i] = sums[i] % 3
+            answer = str(sums[i]) + answer
+        if sums[31] != 0:
+            return int(answer, 2) - pow(2, 32)
+        return (int(answer, 2))
