@@ -211,3 +211,12 @@ class Solution:
         if sums[31] != 0:
             return int(answer, 2) - pow(2, 32)
         return (int(answer, 2))
+
+    #solution 2 (better time complexity)
+    def singleNumber(self, nums: list[int]) -> int:
+        ones = 0
+        twos = 0
+        for num in nums:
+            ones = (ones ^ num) & ~twos
+            twos = (twos ^ num) & ~ones
+        return ones
