@@ -220,3 +220,18 @@ class Solution:
             ones = (ones ^ num) & ~twos
             twos = (twos ^ num) & ~ones
         return ones
+
+    def maxProfit(self, prices: list[int]) -> int:
+        total_profit = 0
+        min_ = prices[0]
+        max_ = prices[0]
+        for i in range(len(prices)):
+            if prices[i] > max_:
+                max_ = prices[i]
+            elif prices[i] < max_:
+                total_profit += (max_ - min_)
+                min_ = prices[i]
+                max_ = prices[i]
+        if max_ != min_:
+            total_profit += max_ - min_
+        return total_profit
