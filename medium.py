@@ -235,3 +235,21 @@ class Solution:
         if max_ != min_:
             total_profit += max_ - min_
         return total_profit
+
+    def rotateRight(self, head: ListNode | None, k: int) -> ListNode | None:
+        if not head or k == 0 or not head.next:
+            return head
+        tail = head
+        length = 1
+        while tail.next:
+            tail = tail.next
+            length += 1
+        tail.next = head
+        val = length - (k % length)
+        current = head
+        prev = None
+        for i in range(val):
+            prev = current
+            current = current.next
+        prev.next = None
+        return current
