@@ -8,8 +8,8 @@ Right now, my primary focus is mastering foundational interview patterns by comp
 
 | Study Plan | Progress | Percent Complete |
 | :--- | :---: | :---: |
-| **Top Interview 150** | `41 / 150` | 27.33% |
-| **Overall LeetCode** | `41` Solved | — |
+| **Top Interview 150** | `44 / 150` | 29.33% |
+| **Overall LeetCode** | `44` Solved | — |
 
 ---
 
