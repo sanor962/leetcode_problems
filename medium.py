@@ -265,3 +265,16 @@ class Solution:
             if max_reach >= (len(nums) - 1):
                 return True
         return False
+
+    def jump(self, nums: list[int]) -> int:
+        if len(nums) < 2:
+            return 0
+        largest = 0
+        counter = 0
+        end = 0
+        for i in range(len(nums) - 1):
+            largest = max(largest, i + nums[i])
+            if i == end:
+                counter += 1
+                end = largest
+        return counter
